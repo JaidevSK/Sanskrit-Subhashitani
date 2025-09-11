@@ -1,0 +1,772 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sanskrit Subhashitani | Sanskrit Verses</title>
+    <style>
+        /* --- Google Fonts --- */
+        @import url('https://fonts.googleapis.com/css2?family=Cardo:ital,wght@0,400;0,700;1,400&family=Hind:wght@300;400;500&display=swap');
+
+        /* --- CSS Variables --- */
+        :root {
+            --header-height: 3.5rem;
+            --hue: 14;
+            --first-color: hsl(var(--hue), 91%, 54%);
+            --first-color-alt: hsl(var(--hue), 91%, 50%);
+            --title-color: hsl(var(--hue), 4%, 100%);
+            --text-color: hsl(var(--hue), 4%, 85%);
+            --text-color-light: hsl(var(--hue), 4%, 55%);
+            --body-color: hsl(var(--hue), 0%, 0%);
+            --container-color: hsl(var(--hue), 0%, 8%);
+
+            /* Font and typography */
+            --body-font: 'Hind', sans-serif;
+            --title-font: 'Cardo', serif;
+            --biggest-font-size: 2rem;
+            --h1-font-size: 1.5rem;
+            --h2-font-size: 1.25rem;
+            --h3-font-size: 1rem;
+            --normal-font-size: .938rem;
+            --small-font-size: .813rem;
+            --smaller-font-size: .75rem;
+
+            --font-medium: 500;
+            --font-semi-bold: 600;
+
+            /* Margins Bottom */
+            --mb-0-5: .5rem;
+            --mb-0-75: .75rem;
+            --mb-1: 1rem;
+            --mb-1-5: 1.5rem;
+            --mb-2: 2rem;
+            --mb-2-5: 2.5rem;
+        }
+
+        /* --- Base --- */
+        * {
+            box-sizing: border-box;
+            padding: 0;
+            margin: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--body-font);
+            font-size: var(--normal-font-size);
+            background-color: var(--body-color);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+
+        h1, h2, h3 {
+            color: var(--title-color);
+            font-family: var(--title-font);
+            font-weight: var(--font-medium);
+        }
+
+        /* --- Layout --- */
+        .container {
+            max-width: 1024px;
+            margin-left: auto;
+            margin-right: auto;
+            padding: 0 1.5rem;
+        }
+
+        /* --- Header --- */
+        .header {
+            text-align: center;
+            padding: var(--mb-2) 0;
+            border-bottom: 1px solid var(--text-color-light);
+            margin-bottom: var(--mb-2-5);
+        }
+
+        .header__title {
+            font-size: var(--biggest-font-size);
+            color: var(--first-color);
+        }
+
+        .header__subtitle {
+            font-size: var(--h3-font-size);
+            color: var(--text-color-light);
+        }
+
+        /* --- Main Content --- */
+        .main {
+            padding-bottom: 3rem;
+        }
+
+        .subhashita-grid {
+            display: grid;
+            gap: 1.5rem;
+        }
+
+        .subhashita-card {
+            background-color: var(--container-color);
+            padding: 1.5rem;
+            border-radius: 0.5rem;
+            border-left: 5px solid var(--first-color);
+            transition: transform 0.3s, box-shadow 0.3s;
+            position: relative;
+        }
+
+        .subhashita-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px hsla(var(--hue), 91%, 54%, 0.1);
+        }
+
+        .subhashita-sanskrit {
+            font-family: var(--title-font);
+            font-size: var(--h2-font-size);
+            color: var(--title-color);
+            margin-bottom: var(--mb-1);
+            font-style: italic;
+        }
+
+        .subhashita-meaning {
+            font-size: var(--normal-font-size);
+            color: var(--text-color);
+        }
+
+        .subhashita-meaning b {
+            color: var(--first-color-alt);
+            font-weight: var(--font-semi-bold);
+        }
+        
+        .copy-btn {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background-color: var(--first-color);
+            color: black;
+            border: none;
+            padding: 0.4rem 0.8rem;
+            border-radius: 0.25rem;
+            cursor: pointer;
+            font-family: var(--body-font);
+            font-weight: var(--font-medium);
+            transition: background-color 0.3s;
+        }
+        
+        .copy-btn:hover {
+            background-color: var(--first-color-alt);
+        }
+        
+        /* --- Responsive --- */
+        @media screen and (min-width: 768px) {
+            .subhashita-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
+        @media screen and (min-width: 1024px) {
+            :root {
+                --biggest-font-size: 3rem;
+                --h1-font-size: 2.25rem;
+                --h2-font-size: 1.5rem;
+                --h3-font-size: 1.25rem;
+                --normal-font-size: 1rem;
+                --small-font-size: .875rem;
+                --smaller-font-size: .813rem;
+            }
+            .subhashita-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+    </style>
+</head>
+<body>
+
+    <header class="header">
+        <div class="container">
+            <h1 class="header__title">सुभाषितानि (Subhashitani)</h1>
+            <h2 class="header__subtitle">The Finest Pearls of Sanskrit Wisdom 💎</h2>
+        </div>
+    </header>
+
+    <main class="main">
+        <section class="subhashitani section container">
+            <div class="subhashita-grid">
+
+                <div class="subhashita-card">
+                    <p class="subhashita-sanskrit">
+                        अयं निजः परो वेति गणना लघुचेतसाम् ।<br>
+                        उदारचरितानां तु वसुधैव कुटुम्बकम् ॥
+                    </p>
+                    <p class="subhashita-meaning">
+                        <b>Meaning:</b> This is mine, that is yours—such thoughts are for the small-minded. For those of noble character, the entire world is one family.
+                    </p>
+                    <button class="copy-btn">Copy</button>
+                </div>
+                
+                <div class="subhashita-card">
+                    <p class="subhashita-sanskrit">
+                        विद्या ददाति विनयं विनयाद् याति पात्रताम् ।<br>
+                        पात्रत्वाद् धनमाप्नोति धनाद्धर्मं ततः सुखम् ॥
+                    </p>
+                    <p class="subhashita-meaning">
+                        <b>Meaning:</b> Knowledge gives humility, from humility one attains character. From character, one acquires wealth, from wealth good deeds (dharma) follow, and then happiness.
+                    </p>
+                    <button class="copy-btn">Copy</button>
+                </div>
+
+                <div class="subhashita-card">
+                    <p class="subhashita-sanskrit">
+                        उद्यमेन हि सिध्यन्ति कार्याणि न मनोरथैः ।<br>
+                        न हि सुप्तस्य सिंहस्य प्रविशन्ति मुखे मृगाः ॥
+                    </p>
+                    <p class="subhashita-meaning">
+                        <b>Meaning:</b> Goals are achieved by effort, not by just wishing for them. A sleeping lion will not have deer walking into its mouth.
+                    </p>
+                    <button class="copy-btn">Copy</button>
+                </div>
+
+                <div class="subhashita-card">
+                    <p class="subhashita-sanskrit">
+                        पुस्तकस्था तु या विद्या परहस्तगतं धनम् ।<br>
+                        कार्यकाले समुत्पन्ने न सा विद्या न तद् धनम् ॥
+                    </p>
+                    <p class="subhashita-meaning">
+                        <b>Meaning:</b> Knowledge that is only in a book and wealth that is in someone else's hands are useless. When the need arises, neither that knowledge nor that wealth can be used.
+                    </p>
+                    <button class="copy-btn">Copy</button>
+                </div>
+                
+                <div class="subhashita-card">
+                    <p class="subhashita-sanskrit">
+                        पृथिव्यां त्रीणि रत्नानि जलमन्नं सुभाषितम् ।<br>
+                        मूढैः पाषाणखण्डेषु रत्नसंज्ञा विधीयते ॥
+                    </p>
+                    <p class="subhashita-meaning">
+                        <b>Meaning:</b> There are three jewels on earth: water, food, and good words (Subhashitam). Fools, however, call pieces of stone jewels.
+                    </p>
+                    <button class="copy-btn">Copy</button>
+                </div>
+
+                <div class="subhashita-card">
+                    <p class="subhashita-sanskrit">
+                        काक चेष्टा, बको ध्यानं, श्वान निद्रा तथैव च ।<br>
+                        अल्पाहारी, गृहत्यागी, विद्यार्थी पंच लक्षणं ॥
+                    </p>
+                    <p class="subhashita-meaning">
+                        <b>Meaning:</b> A student should have five qualities: perseverance like a crow, concentration like a crane, light sleep like a dog, eats only as much as needed, and is detached from home.
+                    </p>
+                    <button class="copy-btn">Copy</button>
+                </div>
+
+                <div class="subhashita-card">
+                    <p class="subhashita-sanskrit">
+                        आलस्यं हि मनुष्याणां शरीरस्थो महान् रिपुः ।<br>
+                        नास्त्युद्यमसमो बन्धुः कृत्वा यं नावसीदति ॥
+                    </p>
+                    <p class="subhashita-meaning">
+                        <b>Meaning:</b> Laziness is the greatest enemy residing in a person's body. There is no friend like hard work; by doing it, one never sorrows.
+                    </p>
+                    <button class="copy-btn">Copy</button>
+                </div>
+
+                <div class="subhashita-card">
+                    <p class="subhashita-sanskrit">
+                        विद्वांसश्च नृपाश्चैव न तुल्यौ कदाचन ।<br>
+                        स्वदेशे पूज्यते राजा विद्वान् सर्वत्र पूज्यते ॥
+                    </p>
+                    <p class="subhashita-meaning">
+                        <b>Meaning:</b> A king and a scholar are never equal. A king is honored only in his own country, while a scholar is honored everywhere.
+                    </p>
+                    <button class="copy-btn">Copy</button>
+                </div>
+
+                <div class="subhashita-card">
+                    <p class="subhashita-sanskrit">
+                        सत्यं ब्रूयात् प्रियं ब्रूयात् न ब्रूयात् सत्यमप्रियम् ।<br>
+                        प्रियं च नानृतं ब्रूयात् एष धर्मः सनातनः ॥
+                    </p>
+                    <p class="subhashita-meaning">
+                        <b>Meaning:</b> Speak the truth, speak what is pleasant. Do not speak an unpleasant truth. Do not speak a pleasant lie. This is the eternal law (dharma).
+                    </p>
+                    <button class="copy-btn">Copy</button>
+                </div>
+
+                <div class="subhashita-card">
+                    <p class="subhashita-sanskrit">
+                        गुणा गुणज्ञेषु गुणा भवन्ति ते निर्गुणं प्राप्य भवन्ति दोषाः ।<br>
+                        आस्वाद्यतोयाः प्रवहन्ति नद्यः समुद्रमासाद्य भवन्त्यपेयाः ॥
+                    </p>
+                    <p class="subhashita-meaning">
+                        <b>Meaning:</b> Virtues remain virtues only in the company of the virtuous. They become flaws when they reach a person devoid of virtue. Just as rivers with sweet water become undrinkable upon reaching the sea.
+                    </p>
+                    <button class="copy-btn">Copy</button>
+                </div>
+
+                <div class="subhashita-card">
+                    <p class="subhashita-sanskrit">
+                        यथा चित्तं तथा वाचो यथा वाचस्तथा क्रियाः ।<br>
+                        चित्ते वाचि क्रियायां च साधूनामेकरूपता ॥
+                    </p>
+                    <p class="subhashita-meaning">
+                        <b>Meaning:</b> As is the mind, so is the speech; as is the speech, so is the action. In the mind, speech, and actions of the noble, there is uniformity.
+                    </p>
+                    <button class="copy-btn">Copy</button>
+                </div>
+
+                <div class="subhashita-card">
+                    <p class="subhashita-sanskrit">
+                        क्षणशः कणशश्चैव विद्यामर्थं च साधयेत् ।<br>
+                        क्षणे नष्टे कुतो विद्या कणे नष्टे कुतो धनम् ॥
+                    </p>
+                    <p class="subhashita-meaning">
+                        <b>Meaning:</b> One should acquire knowledge moment by moment and wealth particle by particle. If a moment is lost, how can there be knowledge? If a particle is lost, how can there be wealth?
+                    </p>
+                    <button class="copy-btn">Copy</button>
+                </div>
+                
+                <div class="subhashita-card">
+                    <p class="subhashita-sanskrit">
+                        अश्वस्य भूषणं वेगो मत्तं स्याद् गजभूषणम् ।<br>
+                        चातुर्यं भूषणं नार्या उद्योगो नरभूषणम् ॥
+                    </p>
+                    <p class="subhashita-meaning">
+                        <b>Meaning:</b> The ornament of a horse is its speed; the majestic gait is the ornament of an elephant. Skill is the ornament of a woman, and industry is the ornament of a man.
+                    </p>
+                    <button class="copy-btn">Copy</button>
+                </div>
+
+                <div class="subhashita-card">
+                    <p class="subhashita-sanskrit">
+                        परोपकाराय फलन्ति वृक्षाः, परोपकाराय वहन्ति नद्यः ।<br>
+                        परोपकाराय दुहन्ति गावः, परोपकारार्थमिदं शरीरम् ॥
+                    </p>
+                    <p class="subhashita-meaning">
+                        <b>Meaning:</b> Trees bear fruit for the benefit of others, rivers flow for the benefit of others. Cows give milk for the benefit of others; this body is also for the benefit of others.
+                    </p>
+                    <button class="copy-btn">Copy</button>
+                </div>
+                
+                <div class="subhashita-card">
+                    <p class="subhashita-sanskrit">
+                        माता शत्रुः पिता वैरी येन बालो न पाठितः ।<br>
+                        न शोभते सभामध्ये हंसमध्ये बको यथा ॥
+                    </p>
+                    <p class="subhashita-meaning">
+                        <b>Meaning:</b> A mother is an enemy and a father is a foe if they do not educate their child. Such an uneducated child does not shine in an assembly, just as a crane does not fit among swans.
+                    </p>
+                    <button class="copy-btn">Copy</button>
+                </div>
+
+                <div class="subhashita-card">
+                    <p class="subhashita-sanskrit">
+                        न चौरहार्यं न च राजहार्यं, न भ्रातृभाज्यं न च भारकारि ।<br>
+                        व्यये कृते वर्धत एव नित्यं, विद्याधनं सर्वधनप्रधानम् ॥
+                    </p>
+                    <p class="subhashita-meaning">
+                        <b>Meaning:</b> It cannot be stolen by thieves, nor taken by kings. It cannot be divided among brothers, nor is it heavy to carry. The more you spend it, the more it grows. The wealth of knowledge is the most supreme of all wealth.
+                    </p>
+                    <button class="copy-btn">Copy</button>
+                </div>
+
+                <div class="subhashita-card">
+                    <p class="subhashita-sanskrit">
+                        अष्टादश पुराणेषु व्यासस्य वचनद्वयम् ।<br>
+                        परोपकारः पुण्याय पापाय परपीडनम् ॥
+                    </p>
+                    <p class="subhashita-meaning">
+                        <b>Meaning:</b> In all the eighteen Puranas, Vyasa has said only two things: doing good to others is a virtue (punya), and hurting others is a sin (paap).
+                    </p>
+                    <button class="copy-btn">Copy</button>
+                </div>
+
+                <div class="subhashita-card">
+                    <p class="subhashita-sanskrit">
+                        दुर्जनः प्रियवादी च नैतद् विश्वासकारणम् ।<br>
+                        मधु तिष्ठति जिह्वाग्रे हृदये तु हलाहलम् ॥
+                    </p>
+                    <p class="subhashita-meaning">
+                        <b>Meaning:</b> Do not trust a wicked person even if they speak sweetly. For there is honey on the tip of their tongue, but poison in their heart.
+                    </p>
+                    <button class="copy-btn">Copy</button>
+                </div>
+
+                <div class="subhashita-card">
+                    <p class="subhashita-sanskrit">
+                        सर्पः क्रूरः खलः क्रूरः सर्पात् क्रूरतरः खलः ।<br>
+                        सर्पः दशति कालेन खलस्तु दशति प्रतिक्षणम् ॥
+                    </p>
+                    <p class="subhashita-meaning">
+                        <b>Meaning:</b> A snake is cruel and a wicked person is cruel, but a wicked person is crueler than a snake. A snake bites only at a certain time, but a wicked person stings at every moment.
+                    </p>
+                    <button class="copy-btn">Copy</button>
+                </div>
+                
+                <div class="subhashita-card">
+                    <p class="subhashita-sanskrit">
+                        उद्योगिनं पुरुषसिंहमुपैति लक्ष्मीः,<br>
+                        दैवेन देयमिति कापुरुषा वदन्ति ।
+                    </p>
+                    <p class="subhashita-meaning">
+                        <b>Meaning:</b> Fortune comes to the man who is industrious like a lion. Only cowards say that wealth is a matter of fate.
+                    </p>
+                    <button class="copy-btn">Copy</button>
+                </div>
+                
+                <div class="subhashita-card">
+                    <p class="subhashita-sanskrit">
+                        गच्छन् पिपीलिको याति योजनानां शतान्यपि ।<br>
+                        अगच्छन् वैनतेयोऽपि पदमेकं न गच्छति ॥
+                    </p>
+                    <p class="subhashita-meaning">
+                        <b>Meaning:</b> A moving ant can travel hundreds of leagues, but even Garuda (a mythical bird) will not move a single step if he does not start.
+                    </p>
+                    <button class="copy-btn">Copy</button>
+                </div>
+                
+                <div class="subhashita-card">
+                    <p class="subhashita-sanskrit">
+                        दातव्यं भोक्तव्यं धनविषये सञ्चयो न कर्तव्यः ।<br>
+                        पश्येह मधुकरिणां सञ्चितार्थं हरन्त्यन्ये ॥
+                    </p>
+                    <p class="subhashita-meaning">
+                        <b>Meaning:</b> One should donate and enjoy wealth; one should not hoard it. Look, others steal the wealth hoarded by honeybees.
+                    </p>
+                    <button class="copy-btn">Copy</button>
+                </div>
+                
+                <div class="subhashita-card">
+                    <p class="subhashita-sanskrit">
+                        चन्दनं शीतलं लोके, चन्दनादपि चन्द्रमाः ।<br>
+                        चन्द्रचन्दनयोर्मध्ये शीतला साधुसंगतिः ॥
+                    </p>
+                    <p class="subhashita-meaning">
+                        <b>Meaning:</b> Sandalwood is cool in this world, and the moon is cooler than sandalwood. But the company of good people is cooler than both the moon and sandalwood.
+                    </p>
+                    <button class="copy-btn">Copy</button>
+                </div>
+                
+                <div class="subhashita-card">
+                    <p class="subhashita-sanskrit">
+                        शैले शैले न माणिक्यं, मौक्तिकं न गजे गजे ।<br>
+                        साधवो न हि सर्वत्र, चन्दनं न वने वने ॥
+                    </p>
+                    <p class="subhashita-meaning">
+                        <b>Meaning:</b> Not every mountain has jewels; not every elephant has a pearl. Noble people are not found everywhere; sandalwood is not found in every forest.
+                    </p>
+                    <button class="copy-btn">Copy</button>
+                </div>
+                
+                <div class="subhashita-card">
+                    <p class="subhashita-sanskrit">
+                        न कश्चित् कस्यचिन्मित्रं न कश्चित् कस्यचिद् रिपुः ।<br>
+                        व्यवहारेण जायन्ते मित्राणि रिपवस्तथा ॥
+                    </p>
+                    <p class="subhashita-meaning">
+                        <b>Meaning:</b> No one is anyone's friend by birth; no one is anyone's enemy by birth. Friends and enemies are made by behavior.
+                    </p>
+                    <button class="copy-btn">Copy</button>
+                </div>
+                
+                <div class="subhashita-card">
+                    <p class="subhashita-sanskrit">
+                        रूपयौवनसम्पन्ना विशालकुलसम्भवाः ।<br>
+                        विद्याहीना न शोभन्ते निर्गन्धा इव किंशुकाः ॥
+                    </p>
+                    <p class="subhashita-meaning">
+                        <b>Meaning:</b> Even those who are blessed with beauty, youth, and born into a great family, do not shine without knowledge, just like the beautiful but odorless 'Kimshuka' flower.
+                    </p>
+                    <button class="copy-btn">Copy</button>
+                </div>
+                
+                <div class="subhashita-card">
+                    <p class="subhashita-sanskrit">
+                        कार्यार्थी भजते लोकं यावत्कार्य न सिध्यति ।<br>
+                        उत्तीर्णे च परे पारे नौकायां किं प्रयोजनम् ॥
+                    </p>
+                    <p class="subhashita-meaning">
+                        <b>Meaning:</b> A person uses others as long as their work is not done. Once the river is crossed, what is the use of the boat?
+                    </p>
+                    <button class="copy-btn">Copy</button>
+                </div>
+                
+                <div class="subhashita-card">
+                    <p class="subhashita-sanskrit">
+                        साहित्यसंगीतकलाविहीनः साक्षात्पशुः पुच्छविषाणहीनः ।<br>
+                        तृणं न खादन्नपि जीवमानस्तद्भागधेयं परमं पशूनाम् ॥
+                    </p>
+                    <p class="subhashita-meaning">
+                        <b>Meaning:</b> A person devoid of literature, music, or art is a direct animal without a tail and horns. It is the great fortune of the other animals that he lives without eating grass.
+                    </p>
+                    <button class="copy-btn">Copy</button>
+                </div>
+                
+                <div class="subhashita-card">
+                    <p class="subhashita-sanskrit">
+                        आरम्भगुर्वी क्षयिणी क्रमेण, लघ्वी पुरा वृद्धिमती च पश्चात् ।<br>
+                        दिनस्य पूर्वार्धपरार्धभिन्ना, छायेव मैत्री खलसज्जनानाम् ॥
+                    </p>
+                    <p class="subhashita-meaning">
+                        <b>Meaning:</b> The friendship of the wicked is like the shadow of the forenoon—large at first and then gradually diminishing. The friendship of the good is like the shadow of the afternoon—small at first and then gradually increasing.
+                    </p>
+                    <button class="copy-btn">Copy</button>
+                </div>
+                
+                <div class="subhashita-card">
+                    <p class="subhashita-sanskrit">
+                        भाषासु मुख्या मधुरा दिव्या गीर्वाणभारती ।<br>
+                        तस्यां हि काव्यं मधुरं तस्मादपि सुभाषितम् ॥
+                    </p>
+                    <p class="subhashita-meaning">
+                        <b>Meaning:</b> Among all languages, the divine language of the gods (Sanskrit) is the most important, sweet, and divine. In it, poetry is sweet, and even sweeter than that are the good sayings (Subhashitas).
+                    </p>
+                    <button class="copy-btn">Copy</button>
+                </div>
+                
+                <div class="subhashita-card">
+                    <p class="subhashita-sanskrit">
+                        सुखार्थी चेत् त्यजेत् विद्यां, विद्यार्थी चेत् त्यजेत् सुखम् ।<br>
+                        सुखार्थिनः कुतो विद्या, विद्यार्थिनः कुतः सुखम् ॥
+                    </p>
+                    <p class="subhashita-meaning">
+                        <b>Meaning:</b> One who seeks comfort should give up knowledge, and one who seeks knowledge should give up comfort. How can a pleasure-seeker acquire knowledge, and how can a knowledge-seeker find comfort?
+                    </p>
+                    <button class="copy-btn">Copy</button>
+                </div>
+                
+                <div class="subhashita-card">
+                    <p class="subhashita-sanskrit">
+                        नरस्याभरणं रूपं रूपस्याभरणं गुणः ।<br>
+                        गुणस्याभरणं ज्ञानं ज्ञानस्याभरणं क्षमा ॥
+                    </p>
+                    <p class="subhashita-meaning">
+                        <b>Meaning:</b> The ornament of a person is beauty. The ornament of beauty is virtue. The ornament of virtue is knowledge. The ornament of knowledge is forgiveness.
+                    </p>
+                    <button class="copy-btn">Copy</button>
+                </div>
+                
+                <div class="subhashita-card">
+                    <p class="subhashita-sanskrit">
+                        येषां न विद्या न तपो न दानं, ज्ञानं न शीलं न गुणो न धर्मः ।<br>
+                        ते मर्त्यलोके भुवि भारभूता, मनुष्यरूपेण मृगाश्चरन्ति ॥
+                    </p>
+                    <p class="subhashita-meaning">
+                        <b>Meaning:</b> Those who have no knowledge, no penance, no charity, no wisdom, no character, no virtue, and no righteousness are a burden on this mortal world. They wander the earth in the form of humans but are actually animals.
+                    </p>
+                    <button class="copy-btn">Copy</button>
+                </div>
+
+                <div class="subhashita-card">
+                    <p class="subhashita-sanskrit">
+                        अपूर्वः कोऽपि कोशोऽयं विद्यते तव भारति ।<br>
+                        व्ययतो वृद्धिमायाति क्षयमायाति सञ्चयात् ॥
+                    </p>
+                    <p class="subhashita-meaning">
+                        <b>Meaning:</b> Oh Goddess Saraswati (Bharati), your treasure of knowledge is truly wonderful! It increases when spent, and depletes when hoarded.
+                    </p>
+                    <button class="copy-btn">Copy</button>
+                </div>
+                
+                <div class="subhashita-card">
+                    <p class="subhashita-sanskrit">
+                        चिन्तनीया हि विपदामादावेव प्रतिक्रिया ।<br>
+                        न कूपखननं युक्तं प्रदीप्ते वह्निना गृहे ॥
+                    </p>
+                    <p class="subhashita-meaning">
+                        <b>Meaning:</b> One should think of a remedy for calamities beforehand. It is not appropriate to start digging a well when the house is already on fire.
+                    </p>
+                    <button class="copy-btn">Copy</button>
+                </div>
+                
+                <div class="subhashita-card">
+                    <p class="subhashita-sanskrit">
+                        अतिपरिचयादवज्ञा संततगमनादनादरो भवति ।<br>
+                        मलये भिल्लपुरन्ध्री चन्दनतरुकाष्ठमिन्धनं कुरुते ॥
+                    </p>
+                    <p class="subhashita-meaning">
+                        <b>Meaning:</b> Over-familiarity breeds contempt; constant visits lead to disrespect. A tribal woman in the Malaya mountains uses sandalwood trees as fuel.
+                    </p>
+                    <button class="copy-btn">Copy</button>
+                </div>
+                
+                <div class="subhashita-card">
+                    <p class="subhashita-sanskrit">
+                        वरमेको गुणी पुत्रो न च मूर्खशतान्यपि ।<br>
+                        एकश्चन्द्रस्तमो हन्ति न च तारागणोऽपि च ॥
+                    </p>
+                    <p class="subhashita-meaning">
+                        <b>Meaning:</b> It is better to have one virtuous son than a hundred foolish ones. A single moon dispels darkness, which a sky full of stars cannot.
+                    </p>
+                    <button class="copy-btn">Copy</button>
+                </div>
+                
+                <div class="subhashita-card">
+                    <p class="subhashita-sanskrit">
+                        यस्य नास्ति स्वयं प्रज्ञा शास्त्रं तस्य करोति किम् ।<br>
+                        लोचनाभ्यां विहीनस्य दर्पणः किं करिष्यति ॥
+                    </p>
+                    <p class="subhashita-meaning">
+                        <b>Meaning:</b> What can scriptures do for a person who lacks their own intellect? What use is a mirror to a person who is blind?
+                    </p>
+                    <button class="copy-btn">Copy</button>
+                </div>
+                
+                <div class="subhashita-card">
+                    <p class="subhashita-sanskrit">
+                        मूर्खस्य पञ्च चिह्नानि गर्वो दुर्वचनं तथा ।<br>
+                        क्रोधश्च दृढवादश्च परवाक्येष्वनादरः ॥
+                    </p>
+                    <p class="subhashita-meaning">
+                        <b>Meaning:</b> A fool has five signs: pride, abusive language, anger, stubborn arguments, and disrespect for the opinions of others.
+                    </p>
+                    <button class="copy-btn">Copy</button>
+                </div>
+                
+                <div class="subhashita-card">
+                    <p class="subhashita-sanskrit">
+                        जलबिन्दुनिपातेन क्रमशः पूर्यते घटः ।<br>
+                        स हेतुः सर्वविद्यानां धर्मस्य च धनस्य च ॥
+                    </p>
+                    <p class="subhashita-meaning">
+                        <b>Meaning:</b> With the falling of water drops, a pot is gradually filled. This same principle applies to the acquisition of all knowledge, righteousness (dharma), and wealth.
+                    </p>
+                    <button class="copy-btn">Copy</button>
+                </div>
+                
+                <div class="subhashita-card">
+                    <p class="subhashita-sanskrit">
+                        विना वेदं विना गीतां विना रामायणीं कथाम् ।<br>
+                        विना कविं कालिदासं भारतं भारतं नहि ॥
+                    </p>
+                    <p class="subhashita-meaning">
+                        <b>Meaning:</b> Without the Vedas, without the Gita, without the story of Ramayana, and without the poet Kalidasa, India is not truly India.
+                    </p>
+                    <button class="copy-btn">Copy</button>
+                </div>
+
+                <div class="subhashita-card">
+                    <p class="subhashita-sanskrit">
+                        आचारः परमो धर्मः, आचारः परमं तपः ।<br>
+                        आचारः परमं ज्ञानम्, आचारात् किं न सिध्यति ॥
+                    </p>
+                    <p class="subhashita-meaning">
+                        <b>Meaning:</b> Good conduct is the highest dharma, it is the highest penance. It is the highest knowledge. What cannot be achieved through good conduct?
+                    </p>
+                    <button class="copy-btn">Copy</button>
+                </div>
+                
+                <div class="subhashita-card">
+                    <p class="subhashita-sanskrit">
+                        यत्र नार्यस्तु पूज्यन्ते रमन्ते तत्र देवताः ।<br>
+                        यत्रैतास्तु न पूज्यन्ते सर्वास्तत्राफलाः क्रियाः ॥
+                    </p>
+                    <p class="subhashita-meaning">
+                        <b>Meaning:</b> Where women are honored, divinity blossoms there. And where they are not honored, all actions become fruitless.
+                    </p>
+                    <button class="copy-btn">Copy</button>
+                </div>
+                
+                <div class="subhashita-card">
+                    <p class="subhashita-sanskrit">
+                        अन्नदानं परं दानं विद्यादानमतः परम् ।<br>
+                        अन्नेन क्षणिका तृप्तिः यावज्जीवं च विद्यया ॥
+                    </p>
+                    <p class="subhashita-meaning">
+                        <b>Meaning:</b> Donating food is a great charity, but donating knowledge is even greater. Food provides temporary satisfaction, while knowledge provides satisfaction for a lifetime.
+                    </p>
+                    <button class="copy-btn">Copy</button>
+                </div>
+                
+                <div class="subhashita-card">
+                    <p class="subhashita-sanskrit">
+                        अधमा धनमिच्छन्ति धनं मानं च मध्यमाः ।<br>
+                        उत्तमा मानमिच्छन्ति मानो हि महताम् धनम् ॥
+                    </p>
+                    <p class="subhashita-meaning">
+                        <b>Meaning:</b> The lowly desire wealth. The mediocre desire wealth and respect. The noble desire only respect, for respect is the wealth of the great.
+                    </p>
+                    <button class="copy-btn">Copy</button>
+                </div>
+                
+                <div class="subhashita-card">
+                    <p class="subhashita-sanskrit">
+                        नाभिषेको न संस्कारः सिंहस्य क्रियते मृगैः ।<br>
+                        विक्रमार्जितराज्यस्य स्वयमेव मृगेन्द्रता ॥
+                    </p>
+                    <p class="subhashita-meaning">
+                        <b>Meaning:</b> There is no official coronation ceremony held by animals to crown the lion as king. He becomes king by his own attributes and prowess.
+                    </p>
+                    <button class="copy-btn">Copy</button>
+                </div>
+                
+                <div class="subhashita-card">
+                    <p class="subhashita-sanskrit">
+                        क्षमा शस्त्रं करे यस्य, दुर्जनः किं करिष्यति ।<br>
+                        अतृणे पतितो वह्निः स्वयमेवोपशाम्यति ॥
+                    </p>
+                    <p class="subhashita-meaning">
+                        <b>Meaning:</b> What can a wicked person do to someone who holds the weapon of forgiveness in their hand? A fire that falls on a grassless ground extinguishes by itself.
+                    </p>
+                    <button class="copy-btn">Copy</button>
+                </div>
+                
+                <div class="subhashita-card">
+                    <p class="subhashita-sanskrit">
+                        स्वभावो नोपदेशेन शक्यते कर्तुमन्यथा ।<br>
+                        सुतप्तमपि पानीयं पुनर्गच्छति शीतताम् ॥
+                    </p>
+                    <p class="subhashita-meaning">
+                        <b>Meaning:</b> One's inherent nature cannot be changed by advice. Even if water is heated, it eventually returns to its cool state.
+                    </p>
+                    <button class="copy-btn">Copy</button>
+                </div>
+                
+                <div class="subhashita-card">
+                    <p class="subhashita-sanskrit">
+                        अमृतं चैव मृत्युश्च द्वयं देहे प्रतिष्ठितम् ।<br>
+                        मोहादुत्पद्यते मृत्युः सत्येनोत्पद्यतेऽमृतम् ॥
+                    </p>
+                    <p class="subhashita-meaning">
+                        <b>Meaning:</b> Both immortality and death reside within the body. Death is born of delusion, and immortality is born of truth.
+                    </p>
+                    <button class="copy-btn">Copy</button>
+                </div>
+
+                <div class="subhashita-card">
+                    <p class="subhashita-sanskrit">
+                        परिवर्तिनि संसारे मृतः को वा न जायते ।<br>
+                        स जातो येन जातेन याति वंशः समुन्नतिम् ॥
+                    </p>
+                    <p class="subhashita-meaning">
+                        <b>Meaning:</b> In this ever-changing world, who is not born again after dying? But he is truly born, by whose birth his family attains eminence.
+                    </p>
+                    <button class="copy-btn">Copy</button>
+                </div>
+                
+            </div>
+        </section>
+    </main>
+    
+    <script>
+        const copyButtons = document.querySelectorAll('.copy-btn');
+
+        copyButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                const card = button.parentElement;
+                const sanskritText = card.querySelector('.subhashita-sanskrit').innerText;
+                const meaningText = card.querySelector('.subhashita-meaning').innerText;
+
+                const textToCopy = `${sanskritText}\n\n${meaningText}`;
+
+                navigator.clipboard.writeText(textToCopy).then(() => {
+                    button.textContent = 'Copied! ✅';
+                    setTimeout(() => {
+                        button.textContent = 'Copy';
+                    }, 2000);
+                }).catch(err => {
+                    console.error('Failed to copy text: ', err);
+                });
+            });
+        });
+    </script>
+</body>
+</html>
